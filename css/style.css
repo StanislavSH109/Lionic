@@ -22,11 +22,6 @@
          url('/fonts/open-sans-v18-latin-600.woff') format('woff')
   }
   
-@media (max-width: 768px) 
-    .{
-
-}
-
 
 * {
     box-sizing: border-box;
@@ -68,13 +63,13 @@ html {
     height: 100%;
 }
 
-.logo {
-       
+
+.nav {
+    display: block;
 }
 
 .nav-list {
     display: flex;
-    margin: auto;
 }
 
 .nav-item {
@@ -83,14 +78,45 @@ html {
     line-height: 1;
 }
 
-.nav-link {;
+.nav-link {
+    position: relative;
     color: #1c1c1c;
 }
+
+.nav-link::before {
+    content:"";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #3172b9;
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+
+.nav-link:focus {
+    outline-offset: 2px;
+    outline:1px solid#3172b9;
+}
+
 
 .nav-link:hover {
     color: #3172b9;
 }
 
+.nav-link:hover::before {
+    transform: scale(1);
+}
+
+.nav-link:active {
+    color:#3122b9;
+    outline: none;
+}
+
+.nav-link:active::after {
+    opacity: 1;
+}
 .nav-item:not(:last-child) {
     margin-right: 50px;
 }
@@ -100,6 +126,8 @@ html {
 }
 
 .btn {
+    position: relative;
+    outline:none;
     display: inline-block;
     padding: 15px 30px;
     font-weight: 600;
@@ -110,7 +138,35 @@ html {
     background-color: #3172b9;
     border-radius: 4px;
     cursor: pointer;
+    transition: 0.3s;
 }
+
+.btn::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+    border-radius: inherit;
+    border: 1px solid #3172b9;
+    outline: none;
+    opacity: 0;
+}
+
+.btn:focus::after {
+    opacity: 1;
+}
+
+.btn:hover {
+    background-color: #3122b9;
+    transition: 0.3s;
+}
+
+.btn:active::after {
+    opacity: 0;
+}
+
 
 /* Секция Hero */
 
